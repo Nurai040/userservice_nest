@@ -1,11 +1,11 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-enum Gender {
+export enum Gender {
   female = 'female',
   male = 'male,',
 }
 
-@Entity()
+@Entity('users')
 export class UserEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
