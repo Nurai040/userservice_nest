@@ -11,15 +11,10 @@ export class UserService {
 
   async removeFlagsandCount() {
     try {
-      const [trueish, count] = await this.repo.findAndCount({
+      const count = await this.repo.count({
         where: { problem: true },
       });
-      await this.repo
-        .createQueryBuilder()
-        .update()
-        .set({ problem: false })
-        .where('problem = :problem', { problem: true })
-        .execute();
+      await this.repo.update({ problem: true }, { problem: false });
       const now = await this.repo.find({ where: { problem: true } });
       const res = {
         beforeHadProblem: count,
