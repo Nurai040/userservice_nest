@@ -9,7 +9,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
   imports: [
     UserModule,
     ConfigModule.forRoot({
-      envFilePath: '../../.env.db',
+      envFilePath: '.env.db',
       isGlobal: true,
     }),
     TypeOrmModule.forRootAsync({
@@ -21,9 +21,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         username: configService.getOrThrow('POSTGRES_USER'),
         password: configService.getOrThrow('POSTGRES_PASSWORD'),
         database: configService.getOrThrow('POSTGRES_DB'),
-        entities: [__dirname + '../database/entities/*.entity{.ts,.js}'],
+        entities: [__dirname + '/../database/entities/*.entity{.ts,.js}'],
         synchronize: true,
-        migrations: [__dirname + '../database/migrations/*.{.ts,.js}'],
+        migrations: [__dirname + '/../database/migrations/*.{.ts,.js}'],
       }),
     }),
   ],

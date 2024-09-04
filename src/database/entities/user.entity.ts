@@ -2,7 +2,7 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 export enum Gender {
   female = 'female',
-  male = 'male,',
+  male = 'male',
 }
 
 @Entity('users')

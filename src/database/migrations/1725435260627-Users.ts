@@ -15,7 +15,7 @@ export class Users1725435260627 implements MigrationInterface {
           },
           {
             name: 'name',
-            type: 'varhcar',
+            type: 'varchar',
           },
           {
             name: 'surname',
@@ -39,9 +39,9 @@ export class Users1725435260627 implements MigrationInterface {
       }),
     );
 
-    for (let i = 0; i <= 1000001; i++) {
+    for (let i = 0; i <= 1000000; i++) {
       await queryRunner.query(
-        `INSERT INTO users (name, surname, age, gender,problem) VALUES ('Name${i}', 'Surname${i}', ${i % 100}, ${i % 2 === 0 ? 'female' : 'male'}, ${Math.random() > 0.5})`,
+        `INSERT INTO users (name, surname, age, gender,problem) VALUES ('Name${i}', 'Surname${i}', ${i % 100}, '${i % 2 === 0 ? 'female' : 'male'}', ${Math.random() > 0.5})`,
       );
     }
   }
